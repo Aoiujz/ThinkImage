@@ -7,7 +7,7 @@ ThinkImage是一个PHP图片处理工具。目前支持图片缩略图，图片�
 ThinkImage的使用比较简单，你只需要引入ThinkImage类，实例化一个ThinkImage的对象并传入要使用的图片处理库类型和要处理的图片，就可以对图片进行操作了。关键代码如下：（以ThinkPHP为例，非ThinkPHP框架请使用PHP原生的文件引入方法）
 
 	//引入图片处理库
-	import('ORG.ThinkImage.ThinkImage'); 
+	import('ORG.Util.ThinkImage.ThinkImage'); 
 	//使用GD库来处理1.gif图片
 	$img = new ThinkImage(THINKIMAGE_GD, './1.gif'); 
 	//将图片裁剪为440x440并保存为corp.gif
