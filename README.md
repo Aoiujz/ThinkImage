@@ -48,15 +48,17 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
 
 一下方法为ThinkImage提供的图片处理接口，可直接使用。
 
+打开一幅图像
+
 	/**
-     * 打开一幅图像
      * @param  string $imgname 图片路径
      * @return Object          当前图片处理库对象
      */
     public function open($imgname){}
 
+保存图片
+
     /**
-     * 保存图片
      * @param  string  $imgname   图片保存名称
      * @param  string  $type      图片类型
      * @param  boolean $interlace 是否对JPEG类型图片设置隔行扫描
@@ -64,38 +66,44 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
      */
     public function save($imgname, $type = null, $interlace = true){}
 
+获取图片宽度
+
     /**
-     * 返回图片宽度
      * @return integer 图片宽度
      */
     public function width(){}
 
+获取图片高度
+
     /**
-     * 返回图片高度
      * @return integer 图片高度
      */
     public function height(){}
 
+获取图像类型
+
     /**
-     * 返回图像类型
      * @return string 图片类型
      */
     public function type(){}
 
+获取图像MIME类型
+
     /**
-     * 返回图像MIME类型
      * @return string 图像MIME类型
      */
     public function mime(){}
 
+获取图像尺寸数组 0 - 图片宽度，1 - 图片高度
+
     /**
-     * 返回图像尺寸数组 0 - 图片宽度，1 - 图片高度
      * @return array 图片尺寸
      */
     public function size(){}
 
+裁剪图片
+
     /**
-     * 裁剪图片
      * @param  integer $w      裁剪区域宽度
      * @param  integer $h      裁剪区域高度
      * @param  integer $x      裁剪区域x坐标
@@ -106,8 +114,9 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
      */
     public function crop($w, $h, $x = 0, $y = 0, $width = null, $height = null){}
 
+生成缩略图
+
     /**
-     * 生成缩略图
      * @param  integer $width  缩略图最大宽度
      * @param  integer $height 缩略图最大高度
      * @param  integer $type   缩略图裁剪类型
@@ -115,8 +124,9 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
      */
     public function thumb($width, $height, $type = THINKIMAGE_THUMB_SCALE){}
 
+添加水印
+
     /**
-     * 添加水印
      * @param  string  $source 水印图片路径
      * @param  integer $locate 水印位置
      * @param  integer $alpha  水印透明度
@@ -124,8 +134,9 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
      */
     public function water($source, $locate = THINKIMAGE_WATER_SOUTHEAST){}
 
+图像添加文字
+
     /**
-     * 图像添加文字
      * @param  string  $text   添加的文字
      * @param  string  $font   字体路径
      * @param  integer $size   字号
