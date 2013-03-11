@@ -69,7 +69,7 @@ class GIF{
 	}
 
 	/**
-	 * 保存当前GIF图片
+	 * 编码并保存当前GIF图片
 	 * @param  string $gifname 图片名称
 	 */
 	public function save($gifname){
