@@ -12,4 +12,7 @@ ThinkImage的使用比较简单，你只需要引入ThinkImage类，实例化一
 	$img = new ThinkImage(THINKIMAGE_GD, './1.gif'); 
 	//将图片裁剪为440x440并保存为corp.gif
 	$img->crop(440, 440)->save('./crop.gif');
-	$img->water('./11.png', THINKIMAGE_WATER_SOUTHEAST)->save("water{$id}.gif");
+	//给裁剪后的图片添加图片水印，位置为右下角，保存为water.gif
+	$img->water('./11.png', THINKIMAGE_WATER_SOUTHEAST)->save("water.gif");
+	//给原图添加水印并保存为water_o.gif（需要重新打开原图）
+	$img->open('./1.gif')->water('./11.png', THINKIMAGE_WATER_SOUTHEAST)->save("water_o.gif");
