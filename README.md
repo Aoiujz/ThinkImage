@@ -148,3 +148,12 @@ ThinkImage提供了部分常量，方便记忆，在使用的过程中，可以�
      */
     public function text($text, $font, $size, $color = '#00000000', 
         $locate = THINKIMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0){}
+
+锐化图片
+		
+	/**
+     * @param  integer $radius 锐化角度
+     * @param  integer $sigma  锐化偏差
+	 * @return Object          当前图片处理库对象
+     */
+    public function sharp($radius = 0, $sigma = 1){}

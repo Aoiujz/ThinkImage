@@ -16,7 +16,7 @@ define('THINKIMAGE_GD',      1); //常量，标识GD库类型
 define('THINKIMAGE_IMAGICK', 2); //常量，标识imagick库类型
 
 /* 缩略图相关常量定义 */
-define('THINKIMAGE_THUMB_SCALING',   1); //常量，标识缩略图等比例缩放类型
+define('THINKIMAGE_THUMB_SCALE',     1); //常量，标识缩略图等比例缩放类型
 define('THINKIMAGE_THUMB_FILLED',    2); //常量，标识缩略图缩放后填充类型
 define('THINKIMAGE_THUMB_CENTER',    3); //常量，标识缩略图居中裁剪类型
 define('THINKIMAGE_THUMB_NORTHWEST', 4); //常量，标识缩略图左上角裁剪类型
@@ -69,120 +69,13 @@ class ThinkImage{
     }
 
     /**
-     * 打开一幅图像
-     * @param  string $imgname 图片路径
-     * @return Object          当前图片处理库对象
+     * 魔术方法，用于调用驱动方法
+     * @param  string $method 方法名称
+     * @param  array  $args   参数列表
+     * @return object         当前图片处理对象
      */
-    public function open($imgname){
-        $this->img->open($imgname);
-        return $this;
-    }
-
-    /**
-     * 保存图片
-     * @param  string  $imgname   图片保存名称
-     * @param  string  $type      图片类型
-     * @param  boolean $interlace 是否对JPEG类型图片设置隔行扫描
-     * @return Object             当前图片处理库对象
-     */
-    public function save($imgname, $type = null, $interlace = true){
-        $this->img->save($imgname, $type, $interlace);
-        return $this;
-    }
-
-    /**
-     * 返回图片宽度
-     * @return integer 图片宽度
-     */
-    public function width(){
-        return $this->img->width();
-    }
-
-    /**
-     * 返回图片高度
-     * @return integer 图片高度
-     */
-    public function height(){
-        return $this->img->height();
-    }
-
-    /**
-     * 返回图像类型
-     * @return string 图片类型
-     */
-    public function type(){
-        return $this->img->type();
-    }
-
-    /**
-     * 返回图像MIME类型
-     * @return string 图像MIME类型
-     */
-    public function mime(){
-        return $this->img->mime();
-    }
-
-    /**
-     * 返回图像尺寸数组 0 - 图片宽度，1 - 图片高度
-     * @return array 图片尺寸
-     */
-    public function size(){
-        return $this->img->size();
-    }
-
-    /**
-     * 裁剪图片
-     * @param  integer $w      裁剪区域宽度
-     * @param  integer $h      裁剪区域高度
-     * @param  integer $x      裁剪区域x坐标
-     * @param  integer $y      裁剪区域y坐标
-     * @param  integer $width  图片保存宽度
-     * @param  integer $height 图片保存高度
-     * @return Object          当前图片处理库对象
-     */
-    public function crop($w, $h, $x = 0, $y = 0, $width = null, $height = null){
-        $this->img->crop($w, $h, $x, $y, $width, $height);
-        return $this;
-    }
-
-    /**
-     * 生成缩略图
-     * @param  integer $width  缩略图最大宽度
-     * @param  integer $height 缩略图最大高度
-     * @param  integer $type   缩略图裁剪类型
-     * @return Object          当前图片处理库对象
-     */
-    public function thumb($width, $height, $type = THINKIMAGE_THUMB_SCALE){
-        $this->img->thumb($width, $height, $type);
-        return $this;
-    }
-
-    /**
-     * 添加水印
-     * @param  string  $source 水印图片路径
-     * @param  integer $locate 水印位置
-     * @param  integer $alpha  水印透明度
-     * @return Object          当前图片处理库对象
-     */
-    public function water($source, $locate = THINKIMAGE_WATER_SOUTHEAST){
-        $this->img->water($source, $locate);
-        return $this;
-    }
-
-    /**
-     * 图像添加文字
-     * @param  string  $text   添加的文字
-     * @param  string  $font   字体路径
-     * @param  integer $size   字号
-     * @param  string  $color  文字颜色
-     * @param  integer $locate 文字写入位置
-     * @param  integer $offset 文字相对当前位置的偏移量
-     * @param  integer $angle  文字倾斜角度
-     * @return Object          当前图片处理库对象
-     */
-    public function text($text, $font, $size, $color = '#00000000', 
-        $locate = THINKIMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0){
-        $this->img->text($text, $font, $size, $color, $locate, $offset, $angle);
+    public function __call($method, $args){
+        call_user_func_array(array($this->img, $method), $args);
         return $this;
     }
 }

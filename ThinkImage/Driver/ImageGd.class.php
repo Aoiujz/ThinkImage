@@ -197,7 +197,7 @@ class ImageGd{
         /* 计算缩略图生成的必要参数 */
         switch ($type) {
             /* 等比例缩放 */
-            case THINKIMAGE_THUMB_SCALING:
+            case THINKIMAGE_THUMB_SCALE:
                 //原图尺寸小于缩略图尺寸则不进行缩略
                 if($w < $width && $h < $height) return;
 
@@ -532,6 +532,16 @@ class ImageGd{
             $this->img = imagecreatefromstring($this->gif->image());
             return false;
         }
+    }
+
+    /**
+     * 锐化图片
+     * @param  integer $radius 锐化角度
+     * @param  integer $sigma  锐化偏差
+     */
+    public function sharp($radius = 0, $sigma = 1){
+        // GD库暂不支持图片锐化
+        // 保留此方法避免切换操作库出错
     }
 
     /**

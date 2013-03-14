@@ -205,7 +205,7 @@ class ImageImagick{
         /* 计算缩略图生成的必要参数 */
         switch ($type) {
             /* 等比例缩放 */
-            case THINKIMAGE_THUMB_SCALING:
+            case THINKIMAGE_THUMB_SCALE:
                 //原图尺寸小于缩略图尺寸则不进行缩略
                 if($w < $width && $h < $height) return;
 
@@ -577,6 +577,15 @@ class ImageImagick{
             $this->img->annotateImage($draw, $x + $ox, $y + $oy, $angle, $text);
         }
         $draw->destroy();
+    }
+
+    /**
+     * 锐化图片
+     * @param  integer $radius 锐化角度
+     * @param  integer $sigma  锐化偏差
+     */
+    public function sharp($radius = 0, $sigma = 1){
+        $this->img->sharpenImage($radius, $sigma);
     }
 
     /**
