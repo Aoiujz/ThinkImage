@@ -69,6 +69,46 @@ class ThinkImage{
     }
 
     /**
+     * 返回图像宽度
+     * @return integer 图像宽度
+     */
+    public function width(){
+        return $this->img->width();
+    }
+
+    /**
+     * 返回图像高度
+     * @return integer 图像高度
+     */
+    public function height(){
+        return $this->img->height();
+    }
+
+    /**
+     * 返回图像类型
+     * @return string 图像类型
+     */
+    public function type(){
+        return $this->img->type();
+    }
+
+    /**
+     * 返回图像MIME类型
+     * @return string 图像MIME类型
+     */
+    public function mime(){
+        return $this->img->mime();
+    }
+
+    /**
+     * 返回图像尺寸数组 0 - 图像宽度，1 - 图像高度
+     * @return array 图像尺寸
+     */
+    public function size(){
+        return $this->img->size();
+    }
+
+    /**
      * 魔术方法，用于调用驱动方法
      * @param  string $method 方法名称
      * @param  array  $args   参数列表
